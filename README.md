@@ -20,16 +20,24 @@ Da un ejemplo
 
 _Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
 
-_Dí cómo será ese paso_
+_/back_
 
 ```
 npm install
 ```
+_Luego de instalar_
+```
+npm run start
+```
 
-_Y repite_
+_/front/llcuidadospersonales_
 
 ```
-hasta finalizar
+npm install
+```
+_Luego de instalar_
+```
+npm run dev
 ```
 
 _Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
