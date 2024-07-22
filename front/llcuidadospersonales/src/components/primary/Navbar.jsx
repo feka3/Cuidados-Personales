@@ -23,7 +23,7 @@ export default function Example() {
                 <div className="flex lg:flex-1">
                     <Link to='/home' className='-m-1.5 p-1.5'>
                         <span className='sr-only'>Your Company</span>
-                        <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
+                        <img className="h-8 w-auto" src="https://i.pinimg.com/736x/1f/e3/f6/1fe3f69e69496ad1f36ccb8d2e98409f.jpg" alt="" />
                     </Link>
 
                 </div>

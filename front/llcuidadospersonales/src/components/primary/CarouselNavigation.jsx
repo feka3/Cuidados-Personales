@@ -1,33 +1,32 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Carousel } from "@material-tailwind/react";
 
-const Carousel = ({ images }) => {
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-    const nextImage = () => {
-        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    };
-
-    const prevImage = () => {
-        setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
-    };
-
+const CarouselComponent = () => {
     return (
-        <div className="relative w-full">
-            <div className="overflow-hidden w-full">
-                <img src={images[currentImageIndex]} alt="carousel" className="w-full " />
+        <Carousel className="rounded-xl">
+            <div className="relative w-full h-96">
+                <img
+                    src="https://www.osteopatia-sevilla.com/wp-content/uploads/2023/02/2-scaled.jpg"
+                    alt="image 1"
+                    className="h-full w-full object-cover"
+                />
             </div>
-            <div className="absolute inset-y-0 left-0 flex items-center">
-                <button onClick={prevImage} className="fs-4 p-2 rounded-r-md hover:bg-gray-300">
-                    &lt;
-                </button>
+            <div className="relative w-full h-96">
+                <img
+                    src="https://www.vitalseguro.com/wp-content/uploads/2020/12/podo%CC%81logo.png"
+                    alt="image 2"
+                    className="h-full w-full object-cover"
+                />
             </div>
-            <div className="absolute inset-y-0 right-0 flex items-center">
-                <button onClick={nextImage} className="fs-4 p-2 rounded-r-md hover:bg-gray-300 border rounded">
-                    &gt;
-                </button>
+            <div className="relative w-full h-96">
+                <img
+                    src="https://harmonycosmetologia.com/wp-content/uploads/2023/12/Slider-1.png"
+                    alt="image 3"
+                    className="h-full w-full object-cover"
+                />
             </div>
-        </div>
+        </Carousel>
     );
 };
 
-export default Carousel;
+export default CarouselComponent;
