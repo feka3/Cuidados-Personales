@@ -1,0 +1,44 @@
+// src/features/appointment/appointmentSlice.js
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+
+// Define async thunk for fetching appointments
+export const fetchAppointments = createAsyncThunk(
+    'appointments/fetchAppointments',
+    async (userId) => {
+        const response = await axios.get(`http://localhost:3001/appointments?userId=${userId}`);
+        return response.data;
+    }
+);
+
+const appointmentSlice = createSlice({
+    name: 'appointments',
+    initialState: {
+        items: [],
+        status: 'idle',
+        error: null,
+    },
+    reducers: {
+        cancelAppointment: (state, action) => {
+            state.items = state.items.filter(appointment => appointment.id !== action.payload);
+        },
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchAppointments.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(fetchAppointments.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                state.items = action.payload.sort((a, b) => new Date(b.date) - new Date(a.date));
+            })
+            .addCase(fetchAppointments.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message;
+            });
+    },
+});
+
+export const { cancelAppointment } = appointmentSlice.actions;
+
+export default appointmentSlice.reducer;
